@@ -88,20 +88,44 @@
 \newcommand{\red}[1]{{\color{red}#1}}
 \newcommand{\green}[1]{{\color{ForestGreen}#1}}
 
+\newcommand{\imagepos}[4]{
+        \begin{textblock}{#1}(#2 , #3)
+                \includegraphics[width=\textwidth]{#4}  
+        \end{textblock}
+}
+
+\newcommand{\imageincl}[2]{
+        \includegraphics[width=#1\textwidth,height=#1\textheight,keepaspectratio=true ]{#2}     
+}
+
+\newcommand{\imagebox}[2]{
+        \includegraphics[width=#1, height=#1,keepaspectratio=true]{#2}  
+}
+
+
 
 \begin{document}
-\author[Lechner]{Lechner} %Teiniker/Schindler
-\title{Coderetreat }
+\author[Lechner]{Martin Lechner} %Teiniker/Schindler
+\title{ITCS Coderetreat }
 \subtitle{Graz 2019}
 %\logo{}
-\institute[FH JOANNEUM]{FH JOANNEUM\\
-	Internettechnik\\
-	\url{http://www.fh-joanneum.at}}
 %
 %\subject{}
 %\setbeamercovered{transparent}
 \setbeamertemplate{navigation symbols}{}
 \frame[plain]{\maketitle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Welcome}
+
+\imageincl{0.3}{ITCS_LOGO_small.jpg}
+
+\centering
+\Huge Welcome \\to the ITCS Code retreat\\ 2019!
+
+
+%\imagepos{3}{1}{1}{ITCS_LOGO_small.jpg}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[squeeze]{Outline}
@@ -112,49 +136,138 @@
 %CodeRetreat2019.png  ITCS_LOGO_small.jpg
 
 
-> 08:30 Eintreffen und Frühstück
-> 09:00 Begrüßung, Erklärung des Ablaufs, drei Aufgaben am Vormittag
-> 12:45 Mittagspause - für das Mittagessen ist gesorgt!
-> 13:45 Zwei Aufgaben am Nachmittag
-> 15:45 Wrap Up :)
+%> 08:30 Eintreffen und Frühstück
+%> 09:00 Begrüßung, Erklärung des Ablaufs, drei Aufgaben am Vormittag
+%> 12:45 Mittagspause - für das Mittagessen ist gesorgt!
+%> 13:45 Zwei Aufgaben am Nachmittag
+%> 15:45 Wrap Up :)
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[plain]
-\begin{center}
-    \textit{\color{blue}{\large
-            Writing clean code is what you must do in order to call yourself a professional.\\
-            There is no reasonable excuse for doing anything less than your best.}}
-\end{center}
-
-\flushright--Robert C. Martin
-\end{frame}
 
 \section{Introduction}
-\subsection{What is a Code Retreat}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[squeeze]{\subsecname{}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{About me}
+Martin Lechner (Ph.D. Informatics)
+\pause
+	\begin{itemize}[<+->]
+		\item Software Developer/Scrum Master/Product Owner
+		\item Work @ Unycom
+		\item Teach at FH-Joanneum Kapfenberg
+		\item Agilist and Clean Code advocate since 20 years		
+	\end{itemize}  
+\end{frame}
+
+\subsection{What is a Code Retreat?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\subsecname{}}
+   A day where programmers come together to:
+   \pause
+	\begin{itemize}[<+->]
+		\item hone their skills
+		\item learn together and from each other
+		\item focus on improving without pressure
+		\item \textbf{\red{have fun!}}
+	\end{itemize}  
+\end{frame}
+
+
+\begin{frame}{History of the code retreat}
+	\begin{itemize}[<+->]
+		\item Idea 2009 at Codemash Conference 
+			\begin{itemize}[<*>]
+				\item Question: How can we practice programming?
+			\end{itemize}  
+		\item Since 2009 practiced worldwide
+			\begin{itemize}[<*>]
+				\item Progagated by Corey Haines
+				\item Global day of coderetreat 2018: 133 events worldwide
+			\end{itemize}  
+	\end{itemize}  
 \end{frame}
 
 
 
-\subsection{Work as you should}
-\begin{frame}[squeeze]{\subsecname{}}
-	Gap between: 
-	How we work - how we should work 
-	-> How much we suck
+\subsection{Structure, Problems and Rules}
+\begin{frame}{Structure of our code retreat}
+	\begin{itemize}[<+->]
+		\item 5 Sessions: 45 min coding, 15 min retro + break
+			\begin{itemize}[<+->]
+				\item 3 Morning sessions
+				\item appr. 12:45-13:45 Lunchbreak 
+				\item 2 Afternoon sessions
+				\item Wrap up
+			\end{itemize}  
+		\item Problem: Conway's Game of Life
+			\begin{itemize}[<+->]
+				\item Easy to understand - allows focus on code
+				\item Complex enough for different approaches
+				\item I expect this: \url{https://www.youtube.com/watch?v=-FaqC4h5Ftg}
+				\item Just kidding - \textbf{purposely too big to finish}! :)
+			\end{itemize}  
+	\end{itemize}  
+\end{frame}
 
-	No pressure - try to suck less :)	
-	\begin{itemize}
+\begin{frame}{Conway's Game of Life}
+\pause
+	\begin{itemize}[<+->]
+		\item Infinite, two dimensional grid of cells
+		\item Cell interacts with 8 neighbours
+		\item At each step in time, a transitions occur
+		\item Four rules for cells depending on neighbours
+	\end{itemize}  
+\end{frame}
+
+\begin{frame}{Conway's Game of Life rules}
+\pause
+	\begin{enumerate}[<+->]
+	  \item Any live cell with \textbf{fewer than two} live neighbours \textbf{dies}, as if caused by underpopulation.
+      \item Any live cell with \textbf{two or three} live neighbours \textbf{lives} on to the next generation.		
+	  \item Any live cell with \textbf{more than three} live neighbours \textbf{dies}, as if by overpopulation.		
+	  \item Any dead cell with \textbf{exactly three} live neighbours \textbf{becomes a live cell}, as if by reproduction.
+	\end{enumerate}
+	\footnotetext{\url{en.wikipedia.org/wiki/Conway's_Game_of_Life}}
+\end{frame}
+
+
+\begin{frame}{Coding Dojo mindset}
+A coding Dojo is a place to practice
+\pause
+
+	\begin{itemize}[<+->]
+		\item Safe place outside work
+		\item No pressure - slow down
+		\item Experiment - Mistakes are Ok and necessary!
+		\item Focus on doing it right (Perfectly) - not on getting it done
+		\item Reduce gap between: \\"How we work" and "how we should work"!%\footnote[<+->]{Defines how much we suck ;)}
+	\end{itemize}  
+\end{frame}
+
+
+\begin{frame}{Code retreat rules}
+\pause
+	\begin{itemize}[<+->]
 		\item Pair Programming (PP)
+		\begin{itemize}[<+->]
+			\item Swap pairs each session
+		    \item Try new partners, approaches, languages
+		\end{itemize}		
 		\item Test Driven Development (TDD)
-		\item 4 Rules of simple Design	+ Clean Code 	
+		\begin{itemize}[<+->]
+			\item Red - Green - Refactor
+		    \item Babysteps
+		\end{itemize}		
+		\item After each session: Delete your Code!
+		\item \textbf{\red{Really! Delete it!}}
+		\begin{itemize}[<+->]
+			\item Focus not on the output
+		    \item Focus on the process: do it perfectly
+		\end{itemize}		
+		
 	\end{itemize}
 \end{frame}
 
-\subsection{4 Rules of simple design}
-\begin{frame}{\subsecname{} (by Kent Beck)}
+\begin{frame}{Four rules of simple design (by Kent Beck)}
 	Simple design:\pause
 	\begin{itemize}[<+->]
 		\item \textbf{\color{red} Passes the tests}
@@ -165,18 +278,26 @@
 \end{frame}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+\begin{center}
+\Huge
+Any questions?
+
+\pause
+Lets Code!!!
+\end{center}
+\end{frame}
+
+
+
 \section{Sessions}
 
-> 08:30 Eintreffen und Frühstück
-> 09:00 Begrüßung, Erklärung des Ablaufs, drei Aufgaben am Vormittag
-> 12:45 Mittagspause - für das Mittagessen ist gesorgt!
-> 13:45 Zwei Aufgaben am Nachmittag
-> 15:45 Wrap Up :)
 
 
 \subsection{Session 1}
 \begin{frame}[squeeze]{\subsecname{}}
-	Get started:
+	\textbf{\Large Get started!}
 	\begin{itemize}
 		\item Understand the problem 
 		\item Get used to the setting (PP, TDD, Clean Code)
@@ -187,7 +308,7 @@
 
 \subsection{Session 2}
 \begin{frame}[squeeze]{\subsecname{}}
-	Pay attention to the working style
+	\textbf{\Large Pay attention to the working style}
 	\begin{itemize}
 		\item Fokus on PP, TDD, Clean Code
 		\item Constraints: Ping-Pong Pairing
@@ -196,6 +317,7 @@
 
 \subsection{Session 3}
 \begin{frame}[squeeze]{\subsecname{}}
+%Tdd as you mean it?
 \end{frame}
 
 \subsection{Lunchbreak}
@@ -204,6 +326,8 @@
 
 \subsection{Session 4}
 \begin{frame}[squeeze]{\subsecname{}}
+% Mute ping pong
+% Babysteps
 \end{frame}
 
 \subsection{Session 5}
@@ -225,11 +349,15 @@
 
 %https://docs.google.com/document/d/1W32Qh4zU2Y-QRdMkbF5zbqUGJM7wMmcM3DoukJLSLq8/edit
 
-\section{Closing}
+\section{Wrap up}
 %%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%
 \begin{frame}{\secname{} }
-    \begin{itemize}[<+->]
-        \item xxx
+Closing Circle:
+    \begin{itemize}[<*>]
+		\item What did you learn today?
+		\item What surprised you today?
+		\item What will you do differently in the future?
+		\item What will you change tomorrow? 
     \end{itemize}
 \end{frame}
 
