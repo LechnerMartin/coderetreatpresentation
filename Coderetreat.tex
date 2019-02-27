@@ -1,0 +1,252 @@
+%\def\ishandout{}
+\ifdefined\ishandout
+\PassOptionsToClass{handout}{beamer}
+\fi
+\documentclass[12pt, xcolor=table, dvipsnames]{beamer}
+%\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+\usepackage{fontspec} % loads: fixltx2e, etex, xunicode, fontspec.
+\setmainfont{Arial}
+
+\setlength{\parskip}{1ex}
+
+\usepackage{fixme}
+
+\usepackage{graphicx}
+%\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\graphicspath{{img/}}
+
+
+%%%%%% Overpic + Textpos
+\usepackage[permil]{overpic}
+
+\usepackage[absolute,overlay,showboxes]{textpos}
+\setlength\unitlength{1mm}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0mm}{0mm} % start everything near the top-left corner
+\TPshowboxesfalse
+
+%%%%%%%%%
+\usepackage{color}
+
+\usepackage{listings}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{ %
+    language=C++,                % choose the language of the code
+    basicstyle=\tiny\ttfamily,       % the size of the fonts that are used for the code
+    %numbers=left,                   % where to put the line-numbers
+    %numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+    %stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+    %numbersep=5pt,                  % how far the line-numbers are from the code
+    backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+    showspaces=false,               % show spaces adding particular underscores
+    showstringspaces=false,         % underline spaces within strings
+    showtabs=false,                 % show tabs within strings adding particular underscores
+    frame=single,           % adds a frame around the code
+    tabsize=2,          % sets default tabsize to 2 spaces
+    %captionpos=b,           % sets the caption-position to bottom
+    %breaklines=true,        % sets automatic line breaking
+    %breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+    %escapeinside={\%*}{*)}          % if you want to add a comment within your code
+    keywordstyle=\color{javapurple}\bfseries,
+    stringstyle=\color{javared},
+    commentstyle=\color{javagreen},
+    morecomment=[s][\color{javadocblue}]{/**}{*/},
+}
+
+\usepackage{multicol}
+
+%%%%% Beamer %%%%%
+%\usetheme{UniversiteitGent}
+\usetheme{Madrid}
+\usecolortheme{seagull}
+\usepackage[german=guillemets]{csquotes}
+
+\newlength{\templenght}
+\newcommand{\textttb}[1]{\texttt{\bf#1}}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+\AtBeginSection % Do nothing for \section*
+{
+	\begin{frame}[squeeze]
+	\frametitle{Outline}
+	\small
+	\tableofcontents[currentsection]
+\end{frame}
+}
+
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\green}[1]{{\color{ForestGreen}#1}}
+
+
+\begin{document}
+\author[Lechner]{Lechner} %Teiniker/Schindler
+\title{Coderetreat }
+\subtitle{Graz 2019}
+%\logo{}
+\institute[FH JOANNEUM]{FH JOANNEUM\\
+	Internettechnik\\
+	\url{http://www.fh-joanneum.at}}
+%
+%\subject{}
+%\setbeamercovered{transparent}
+\setbeamertemplate{navigation symbols}{}
+\frame[plain]{\maketitle}
+
+%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[squeeze]{Outline}
+\small
+\tableofcontents
+\end{frame}
+
+%CodeRetreat2019.png  ITCS_LOGO_small.jpg
+
+
+> 08:30 Eintreffen und Frühstück
+> 09:00 Begrüßung, Erklärung des Ablaufs, drei Aufgaben am Vormittag
+> 12:45 Mittagspause - für das Mittagessen ist gesorgt!
+> 13:45 Zwei Aufgaben am Nachmittag
+> 15:45 Wrap Up :)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+\begin{center}
+    \textit{\color{blue}{\large
+            Writing clean code is what you must do in order to call yourself a professional.\\
+            There is no reasonable excuse for doing anything less than your best.}}
+\end{center}
+
+\flushright--Robert C. Martin
+\end{frame}
+
+\section{Introduction}
+\subsection{What is a Code Retreat}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[squeeze]{\subsecname{}}
+
+\end{frame}
+
+
+
+\subsection{Work as you should}
+\begin{frame}[squeeze]{\subsecname{}}
+	Gap between: 
+	How we work - how we should work 
+	-> How much we suck
+
+	No pressure - try to suck less :)	
+	\begin{itemize}
+		\item Pair Programming (PP)
+		\item Test Driven Development (TDD)
+		\item 4 Rules of simple Design	+ Clean Code 	
+	\end{itemize}
+\end{frame}
+
+\subsection{4 Rules of simple design}
+\begin{frame}{\subsecname{} (by Kent Beck)}
+	Simple design:\pause
+	\begin{itemize}[<+->]
+		\item \textbf{\color{red} Passes the tests}
+		\item Reveals all intention (Naming!)
+		\item Contains no duplication (DRY)
+		\item Fewest elements (KISS)
+	\end{itemize}
+\end{frame}
+
+
+\section{Sessions}
+
+> 08:30 Eintreffen und Frühstück
+> 09:00 Begrüßung, Erklärung des Ablaufs, drei Aufgaben am Vormittag
+> 12:45 Mittagspause - für das Mittagessen ist gesorgt!
+> 13:45 Zwei Aufgaben am Nachmittag
+> 15:45 Wrap Up :)
+
+
+\subsection{Session 1}
+\begin{frame}[squeeze]{\subsecname{}}
+	Get started:
+	\begin{itemize}
+		\item Understand the problem 
+		\item Get used to the setting (PP, TDD, Clean Code)
+		\item No further constraints
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Session 2}
+\begin{frame}[squeeze]{\subsecname{}}
+	Pay attention to the working style
+	\begin{itemize}
+		\item Fokus on PP, TDD, Clean Code
+		\item Constraints: Ping-Pong Pairing
+	\end{itemize}
+\end{frame}
+
+\subsection{Session 3}
+\begin{frame}[squeeze]{\subsecname{}}
+\end{frame}
+
+\subsection{Lunchbreak}
+\begin{frame}[squeeze]{\subsecname{}}
+\end{frame}
+
+\subsection{Session 4}
+\begin{frame}[squeeze]{\subsecname{}}
+\end{frame}
+
+\subsection{Session 5}
+
+%https://www.coderetreat.org/pages/hosting/hosts/
+
+%Ping Pong
+%Silent pairing
+%Legacy code (Switch Laptop)
+%5min Limit (Git)
+%Tell dont ask
+%No Primitives
+%Classes as Verbs instead of nouns
+%Immutables only, please (vielleicht mit etwas anderem kombinieren)
+%No conditional statements
+%If you feel people are not refactoring enough – choose one of the “Quality Constraints”. My favorite is – “No methods bigger than 5 lines”. Closing brackets do not count in those 5. For scripting languages like Ruby, Javascript and Python constraint is 3 lines.
+%People are using a lot of primitives? “No Naked Primitives”
+%To make them try new stuff or remember something forgotten try “No Loops” or “No If Statements”.
+
+%https://docs.google.com/document/d/1W32Qh4zU2Y-QRdMkbF5zbqUGJM7wMmcM3DoukJLSLq8/edit
+
+\section{Closing}
+%%%%%%%%%%%%%%%% Frame %%%%%%%%%%%%%
+\begin{frame}{\secname{} }
+    \begin{itemize}[<+->]
+        \item xxx
+    \end{itemize}
+\end{frame}
+
+\section{Reference}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\secname{}}
+    \begin{itemize}[<*>]
+        \item Clean Code: A Handbook of Agile Software Craftsmanship
+        \begin{itemize}[<*>] 
+        \item Robert C. Martin
+        \item 2008 Prentice Hall
+        \end{itemize} 
+     \end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
